@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {splitIntoWords} from "./01_test_fold/01";
+
+const sentense='Hello my dear!'
+let result = splitIntoWords(sentense);
+console.log(result)
+
 
 ReactDOM.render(
   <React.StrictMode>
