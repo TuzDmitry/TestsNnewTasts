@@ -1,18 +1,16 @@
-import React, {ChangeEvent, useRef, useState, SetStateAction} from 'react';
-import { action } from '@storybook/addon-actions';
-import { Button } from '@storybook/react/demo';
+import React, {ChangeEvent, useRef, useState, SetStateAction, FormEvent} from 'react';
 
 export default {
-  title: 'Input',
+    title: 'Input',
 };
 
 export const UnControlledInput = () => <input type="text"/>;
 
 
 export const TrackUnControlledInput = () => {
-let [val, changeVal]=useState("")
+    let [val, changeVal] = useState("")
 
-    let chan=(e:ChangeEvent<HTMLInputElement>)=>{
+    let chan = (e: ChangeEvent<HTMLInputElement>) => {
         changeVal(e.currentTarget.value)
     }
 
@@ -21,24 +19,62 @@ let [val, changeVal]=useState("")
 
 
 export const GetValueOfUnControlledInputByPressButton = () => {
-    let [val, changeVal]=useState("")
-
-const inputRef=useRef<HTMLInputElement>(null);
-
-
-
+    let [val, changeVal] = useState("")
+    const inputRef = useRef<HTMLInputElement>(null);
     return <>
-        <input type="text"  ref={inputRef}/>
-        <button onClick={()=>{
-            const el=inputRef.current as HTMLInputElement;
+        <input type="text" ref={inputRef}/>
+        <button onClick={() => {
+            const el = inputRef.current as HTMLInputElement;
             changeVal(el.value)
-        }}>
-            Press</button>{val}
-        </>;
+        }}>Press
+        </button>
+        {val}</>;
 }
 
 
+export const ControlledInput = () => {
+    let [val, changeVal] = useState("")
 
+    return <><input value={val} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+        changeVal(e.currentTarget.value);
+        console.log(e.currentTarget.value)
+    }}/>
+        {/*{val}*/}
+    </>;
+}
 
-export const ControlledInput = () => <input value="text"/>;
+export const ControlledCheckBox = () => {
+    let [val, changeVal] = useState(false)
+
+    return <><input type='checkbox' checked={val} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+        changeVal(e.currentTarget.checked);
+    }}/>
+        {val.toString()}
+    </>;
+}
+
+export const ControlledSelect = () => {
+    let [val, changeVal] = useState("2")
+
+    return <select name="1" id="1" value={val} onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+        changeVal(e.currentTarget.value)
+    }}>
+        <option value="1">Minsk</option>
+        <option value="2">Kiyv</option>
+        <option value="3">Moskow</option>
+    </select>
+}
+
+export const ControlledSelectWithOutVal = () => {
+    let [val, changeVal] = useState("")
+
+    return <select name="1" id="1" value={val} onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+        changeVal(e.currentTarget.value)
+    }}>
+        <option value="1">Minsk</option>
+        <option value="2">Kiyv</option>
+        <option value="3">Moskow</option>
+    </select>
+}
+
 

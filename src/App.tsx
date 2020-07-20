@@ -20,18 +20,15 @@ function App() {
         <div style={{display: "flex", justifyContent: "space-around"}}>
             <div>
                 <div>Контролируемый</div>
-                <Accordeon titleValue={"Users"} collapsed={collapsed} changeCollepsed={()=>{changeCollepsed(!collapsed)}}/>
+                {/*<Accordeon titleValue={"Users"} collapsed={collapsed} changeCollepsed={()=>{changeCollepsed(!collapsed)}} onClick={()=>{alert('fs')} } items={[]}/>*/}
                 <Rating value={ratingValue} onClick={setRaitingValue}/>
                 <OnOff on={on} setOn={setOn}/>{on.toString()}
             </div>
             <div>
                 <div>НЕконтролируемый</div>
                 <UnControlledAccordeon titleValue={"Followers"}/>
-                <UnControledRating/>
-                <UnControledRating/>
-                <UnControledRating/>
-                <UnControledRating/>
-                <UnControledRating/>
+                {/*<UnControledRating onChange={()=>{}}/>*/}
+
                 <UnControlledOnOff onChange={setOn} defaulValue={on}/>
             </div>
         </div>

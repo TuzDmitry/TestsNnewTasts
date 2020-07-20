@@ -1,9 +1,17 @@
 import React from "react"
 
+
+type ItemType={
+    title:string
+    value:any
+}
+
 type AccordeonType={
     titleValue:string
     collapsed?:boolean
     changeCollepsed:()=>void
+    items:ItemType[]
+    onClick:(val:any)=>void
 }
 
 
@@ -11,7 +19,7 @@ export function Accordeon(props:AccordeonType) {
     return (
         <>
             <AccordeonTitle changeCollepsed={props.changeCollepsed} titleValue={props.titleValue}/>
-            {!props.collapsed &&<AccordeonBody/>}
+            {!props.collapsed &&<AccordeonBody items={props.items} onClick={props.onClick}/>}
         </>
     )
 }
@@ -27,12 +35,15 @@ function AccordeonTitle(props:AccordeonTitlePropsType) {
     )
 }
 
-const AccordeonBody = () => {
+type AccordeonBodyType={
+    onClick:(val:any)=>void
+    items:ItemType[]
+}
+
+const AccordeonBody = (props:AccordeonBodyType) => {
     return (
-        <div>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </div>
+        <ul>
+            {props.items.map((el,i)=><li onClick={()=>{props.onClick(el.value)}} key={i}>{el.title}</li>)}
+        </ul>
     )
 }

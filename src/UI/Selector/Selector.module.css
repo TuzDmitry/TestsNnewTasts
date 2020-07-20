@@ -1,0 +1,32 @@
+.mainBlock {
+    min-height: 30px;
+    border: 1px solid;
+    width: 130px;
+    box-sizing: border-box;
+}
+
+
+.element {
+    padding-bottom: 5px;
+    list-style-type: none;
+}
+
+.element:hover {
+    /*border: 1px solid;*/
+    /*background-color: blue;*/
+}
+
+
+.selecteditem {
+    background-color: blue;
+}
+
+.re{
+
+    display: inline-block;
+}
+.re:focus,.re:active,.re:hover{
+    border: none;
+    display: inline-block;
+    outline: none;
+}
